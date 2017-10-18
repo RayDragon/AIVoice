@@ -17,7 +17,7 @@ try:
         with m as source: audio = r.listen(source)
         print("Let me recognise it :) ")
         try:
-            value = r.recognize_google(audio)
+            value = r.recognize_sphinx(audio)
             tts = gts(text='you said,' + value, lang='en')
             filename = 'temp.mp3'
             tts.save(filename)
@@ -32,9 +32,9 @@ try:
                 break
 
         except sr.UnknownValueError:
-            print("Oops! Didn't catch that")
+            print("Didn't catch that")
         except sr.RequestError as e:
-            print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
+            print("Internet Required {0}".format(e))
 
 except KeyboardInterrupt:
     pass
